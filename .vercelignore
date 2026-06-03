@@ -1,0 +1,7 @@
+.env*
+.npm-cache
+.tools
+.tmp-chrome-shot
+.vercel-local
+dev-server*.log
+tsconfig.tsbuildinfo
