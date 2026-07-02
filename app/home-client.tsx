@@ -6,6 +6,14 @@ export type Lang = "sr" | "en";
 
 const langKey = "webstudiosd-lang";
 const contactEmail = "webstudiokrusevac@gmail.com";
+const contactPhone = "+38169692253";
+const contactPhoneLabel = "+381 69 692 253";
+const contactAddress = "Bivoljska 152, Krusevac";
+const mapQuery = "Bivoljska 152, Krusevac";
+const mapUrl = `https://www.google.com/maps?q=${encodeURIComponent(mapQuery)}`;
+const mapEmbedUrl = `${mapUrl}&output=embed`;
+const facebookUrl = "https://www.facebook.com/profile.php?id=61590561213027";
+const instagramUrl = "https://www.instagram.com/webstudiokrusevac/";
 
 const isLang = (value: string | null): value is Lang => value === "sr" || value === "en";
 
@@ -334,6 +342,15 @@ const text = {
     pricingTitle: "Prezentacije različite složenosti, od jednostavnog starta do premium sajta.",
     contactEyebrow: "Kontakt",
     contactTitle: "Pošalji ideju, delatnost i jedan sajt koji ti se sviđa.",
+    contactLead: "Možeš poslati upit kroz formu ili se javiti direktno telefonom. Radimo iz Kruševca i pokrivamo klijente lokalno i online.",
+    contactDetails: {
+      phone: "Telefon",
+      address: "Adresa",
+      email: "Email",
+      facebook: "Facebook",
+      instagram: "Instagram",
+      map: "Otvori Google mapu"
+    },
     form: {
       name: "Ime i firma",
       namePlaceholder: "Petar, Studio Primer",
@@ -392,6 +409,15 @@ const text = {
     pricingTitle: "Presentation websites of different complexity, from a simple start to a premium site.",
     contactEyebrow: "Contact",
     contactTitle: "Send your idea, industry and one website you like.",
+    contactLead: "You can send an inquiry through the form or contact us directly by phone. We work from Krusevac with local and online clients.",
+    contactDetails: {
+      phone: "Phone",
+      address: "Address",
+      email: "Email",
+      facebook: "Facebook",
+      instagram: "Instagram",
+      map: "Open Google map"
+    },
     form: {
       name: "Name and company",
       namePlaceholder: "Peter, Example Studio",
@@ -683,6 +709,55 @@ export default function HomeClient({ initialLang }: { initialLang: Lang }) {
           <div className="contactCopy">
             <p className="eyebrow">{t.contactEyebrow}</p>
             <h2>{t.contactTitle}</h2>
+            <p className="contactLead">{t.contactLead}</p>
+            <div className="contactInfo" aria-label={lang === "sr" ? "Kontakt podaci" : "Contact details"}>
+              <a className="contactInfoItem" href={`tel:${contactPhone}`}>
+                <span className="contactIcon phoneIcon" aria-hidden="true" />
+                <span className="contactInfoText">
+                  <span>{t.contactDetails.phone}</span>
+                  <strong>{contactPhoneLabel}</strong>
+                </span>
+              </a>
+              <a className="contactInfoItem" href={mapUrl} target="_blank" rel="noreferrer">
+                <span className="contactIcon mapIcon" aria-hidden="true" />
+                <span className="contactInfoText">
+                  <span>{t.contactDetails.address}</span>
+                  <strong>{contactAddress}</strong>
+                </span>
+              </a>
+              <a className="contactInfoItem" href={`mailto:${contactEmail}`}>
+                <span className="contactIcon mailIcon" aria-hidden="true" />
+                <span className="contactInfoText">
+                  <span>{t.contactDetails.email}</span>
+                  <strong>{contactEmail}</strong>
+                </span>
+              </a>
+              <a className="contactInfoItem" href={facebookUrl} target="_blank" rel="noreferrer">
+                <span className="contactIcon facebookIcon" aria-hidden="true" />
+                <span className="contactInfoText">
+                  <span>{t.contactDetails.facebook}</span>
+                  <strong>Web Studio SD</strong>
+                </span>
+              </a>
+              <a className="contactInfoItem" href={instagramUrl} target="_blank" rel="noreferrer">
+                <span className="contactIcon instagramIcon" aria-hidden="true" />
+                <span className="contactInfoText">
+                  <span>{t.contactDetails.instagram}</span>
+                  <strong>@webstudiokrusevac</strong>
+                </span>
+              </a>
+            </div>
+            <div className="mapFrame">
+              <iframe
+                title="Web Studio SD Google mapa"
+                src={mapEmbedUrl}
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+              />
+              <a href={mapUrl} target="_blank" rel="noreferrer">
+                {t.contactDetails.map}
+              </a>
+            </div>
           </div>
           <form className="contactForm" action="/api/contact" method="post" onSubmit={sendInquiry}>
             <label>
@@ -733,7 +808,17 @@ export default function HomeClient({ initialLang }: { initialLang: Lang }) {
 
         <footer className="footer">
           <strong>Web Studio Kruševac</strong>
+          <a href={`tel:${contactPhone}`}>{contactPhoneLabel}</a>
           <a href="mailto:webstudiokrusevac@gmail.com">webstudiokrusevac@gmail.com</a>
+          <a href={mapUrl} target="_blank" rel="noreferrer">
+            {contactAddress}
+          </a>
+          <a className="footerIconLink" href={facebookUrl} target="_blank" rel="noreferrer" aria-label="Facebook">
+            <span className="contactIcon facebookIcon" aria-hidden="true" />
+          </a>
+          <a className="footerIconLink" href={instagramUrl} target="_blank" rel="noreferrer" aria-label="Instagram">
+            <span className="contactIcon instagramIcon" aria-hidden="true" />
+          </a>
           <a className="backTop" href="#top">
             {t.footerBack}
           </a>
