@@ -361,6 +361,7 @@ h3 {
 
 .section {
   padding: clamp(72px, 10vw, 138px) clamp(18px, 6vw, 88px);
+  scroll-margin-top: 118px;
   content-visibility: auto;
   contain-intrinsic-size: 900px;
 }
@@ -1029,6 +1030,7 @@ h3 {
   gap: clamp(28px, 6vw, 72px);
   align-items: start;
   padding: clamp(54px, 8vw, 96px) clamp(18px, 6vw, 88px);
+  scroll-margin-top: 118px;
   content-visibility: auto;
   contain-intrinsic-size: 760px;
   color: #fff;
@@ -1234,6 +1236,7 @@ h3 {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 14px;
+  margin-top: clamp(300px, 19vw, 360px);
   padding: clamp(18px, 3vw, 28px);
   border: 1px solid rgba(255, 255, 255, 0.18);
   border-radius: 8px;
@@ -1982,6 +1985,7 @@ h1 {
 
   .contactForm {
     grid-template-columns: 1fr;
+    margin-top: 0;
   }
 
   .pricingGrid {
